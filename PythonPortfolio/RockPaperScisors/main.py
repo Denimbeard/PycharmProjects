@@ -28,57 +28,68 @@ __studentid__ = '33683213'
 
 # =============================================================================
 import time
+import random
 
-# Rock Paper Scissor Rules:
-# Rock beats scissor
-# Paper beats rock
-# Scissor beats paper
 
-# Player one decides on the count of three what option of the three they want to show
-# Player two also decides, and they reveal at the same x
-
-print('Rock Paper Scissor Rules:\n', 'Rock beats scissors\n', 'Paper beats rock\n', 'Scissor beats paper\n',
+class Start:
+    print('Rock Paper Scissor Rules:\n', 'Rock beats scissors\n', 'Paper beats rock\n', 'Scissor beats paper\n',
           'Player one decides on the count of three what option of the three they want to show\n',
           'Player two also decides, and they reveal at the same time\n')
-start = input('Are you ready to play? y/n: ')
+    start: str = input('Are you ready to play? y/n: ')
 
 
+class Human:
+    def __init__(self, player, score, choice):
+        # Player
+        self.player = player
+        self.score = 0
+        # Human Choice
+        self.choice = 'R'
 
 
-class Match:
+class Computer(Human):
+    # Computer Choice
+    pass
+
+
+class MatchLogic(Human, Computer):
+    # Match Logic:
+
+    # Rock Paper Scissor Rules:
+    # Rock beats scissor
+    # Paper beats rock
+    # Scissor beats paper
+
+    # Player one decides on the count of three what option of the three they want to show
+    # Player two also decides, and they reveal at the same x
+
+    # Timer (Seconds)
     t = 3
-    scoreH = 0
-    scoreC = 0
-    R = 3
-    P = 5
-    S = 7
-
-
-    def __init__(self, name):
-        self.Player = name
-        self.Reveal = [' ']
-
-    # define the countdown func
-    # Countdown from 3
     while start := 'y':
+        # define the countdown func
         while t >= 0:
             print(t, end='... ')
             time.sleep(1)
+            # Countdown from 3
             t -= 1
-        shot = input('SHOOT: (R/P/S)')
-        break
+            Human.Choice = input('SHOOT: (R/P/S)')
+            break
+    pass
 
-    if human.Player/computer.Player := (3/7) or (5/3) or (7/5):
-        scoreH += 1
-        print('Player: ', shot, 'Computer: ', computer, ' || Score: ', scoreH, ' : ', scoreC)
-    # if human.Player/computer.Player := 1:
-
-    # Output (p1) v (p2) = ?
+# Reset Loop
+class Reset(MatchLogic):
+    # If not draw, show score for current session
     # If draw, immediately count down again
+    pass
 
 
-player = Match('human')
-computer = Match('computer')
+# Scoring
+class Scoring(Human, Computer):
+    # Output (p1) v (p2) = ?
+    # print('Player: ', shot, 'Computer: ', computer, ' || Score: ', scoreH, ' : ', scoreC)
+    pass
 
 
-# If not draw, show score for current session
+x = Human('Player 1', 0, 'R')
+y = Computer('Computer', 0, 'R')
+Computer.Choice = random.choice(['Rock', 'Paper', 'Scissors'])
