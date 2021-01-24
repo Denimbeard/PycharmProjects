@@ -1,0 +1,18 @@
+from typing import Union
+
+
+
+# Function to input variables for Equations
+# def equations():
+
+# Function to input variables for Demand
+# def demand():
+
+# Function to input variables for Supply
+# def supply():
+
+# Function to build Table
+
+table: list[Union[list[Union[str, int]], list[Union[str, int, float]]]]
+= [["Sun",696000,1989100000],["Earth",6371,5973.6],["Moon",1737,73.5],["Mars",3390,641.85]]
+print(table)

@@ -1,0 +1,65 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+# This programs implements an FSA. It keeps track of the current FSA's state
+# in a variable called "STATE". The algorithm traverses the given string and,
+# depending on the current character, decides what the next state will be.
+# The INITIAL state is S1, and the ONLY recognising state is S7.
+# (c) Max Garagnani 2020
+
+STATE, result = 1, False  # Initial state is 1; default 'result' is "False"
+
+s = input("Please enter the string to be checked:")
+
+for c in s:  # For each character of the string (starting from left):
+
+    # Check if the character considered is 'A' or 'B' or 'C':
+    if not (c == 'A' or c == 'B' or c == 'C'):
+        STATE = 8  # If not --> the next state will be S8 (Error)
+
+    # If we are in state S1, and...
+    elif STATE == 1 and c == 'A':  # .. the character is 'A',
+        STATE = 2  # --> next state is S2
+    elif STATE == 1:  # Otherwise (i.e, not 'A'),
+        STATE = 8  # --> we go to S8 (error)
+
+    # If we are in state S2, and..
+    elif STATE == 2 and c == 'A':  # .. the character is 'A',
+        STATE = 1  # --> we go "back" to S1
+    elif STATE == 2 and c == 'B':  # .. the character is 'B',
+        STATE = 3  # --> next state is S3
+
+    # If we are in state S3, and..
+    elif STATE == 3 and c == 'A':  # .. the character is 'A',
+        STATE = 4  # --> next state is S4
+    elif STATE == 3 and c == 'C':  # .. the character is 'C',
+        STATE = 1  # --> we go back to S1
+    elif STATE == 3:  # Otherwise (neither 'A' nor 'C'),
+        STATE = 8  # --> we go to S8 (error)
+
+    # If we are in state S4, and..
+    elif STATE == 4 and c == 'B':  # .. the character is 'B',
+        STATE = 5  # --> next state is S5
+    elif STATE == 4 and c == 'C':  # .. the character is 'C',
+        STATE = 3  # --> we go back to S3
+
+    # If we are in state S5, and..
+    elif STATE == 5 and c == 'C':  # .. the character is 'C',
+        STATE = 6  # --> next state is S6
+    elif STATE == 5:  # Otherwise (it's not 'C'),
+        STATE = 8  # --> we go to S8 (error)
+
+    # If we are in state S6, and..
+    elif STATE == 6 and c == 'A':  # .. the character is 'A',
+        STATE = 5  # --> we go back to S5
+    elif STATE == 6 and c == 'B':  # .. the character is 'B',
+        STATE = 7  # --> next state is S7
+
+    # If we are in S7, and we get ANY character,
+    elif STATE == 7:
+        STATE = 8  # --> we must go to S8 (error)
+
+    # ELSE (in all other cases): THE STATE we are CURRENTLY IN remains UNCHANGED.
+
+if STATE == 7:  # At the END of the string, are we in S7..?
+    result = True  # If so, result = True; otherwise, it remains False
+print(result)
