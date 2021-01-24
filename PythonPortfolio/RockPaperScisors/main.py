@@ -31,65 +31,85 @@ import time
 import random
 
 
-class Start:
-    print('Rock Paper Scissor Rules:\n', 'Rock beats scissors\n', 'Paper beats rock\n', 'Scissor beats paper\n',
-          'Player one decides on the count of three what option of the three they want to show\n',
-          'Player two also decides, and they reveal at the same time\n')
-    start: str = input('Are you ready to play? y/n: ')
-
-
+# Player Attributes
 class Human:
-    def __init__(self, player, score, choice):
-        # Player
-        self.player = player
-        self.score = 0
+    cntdwn = 0
+
+    def __init__(self, player, score, choice, script, start, cntdwn):
+        """
+        # Player Attribute
+        :type player: str
+        # Player Score
+        :type score: int
         # Human Choice
-        self.choice = 'R'
+        :type choice: str
+        # Opening Script
+        :type script: list[]
+        # Variable starts the match:
+        :type start: str
+        #Timer:
+        :type cntdwn: int
+
+        """
+        self.cntdwn = cntdwn
+        self.player = player
+        self.score = score
+        self.choice = choice
+        self.script = script
+        self.start = start
 
 
+# Computer Attributes
 class Computer(Human):
     # Computer Choice
     pass
 
 
+# TODO: Match Logic
 class MatchLogic(Human, Computer):
     # Match Logic:
 
-    # Rock Paper Scissor Rules:
-    # Rock beats scissor
-    # Paper beats rock
-    # Scissor beats paper
+    # TODO: Rock Paper Scissor Rules:
+    #  Rock beats scissor
+    #  Paper beats rock
+    #  Scissor beats paper
 
-    # Player one decides on the count of three what option of the three they want to show
-    # Player two also decides, and they reveal at the same x
+    # TODO:
+    #  Player one decides on the count of three what option of the three they want to show
+    #  Player two also decides, and they reveal at the same x
 
     # Timer (Seconds)
-    t = 3
-    while start := 'y':
+    while Human(player=str, score=int, script=list[str], choice=str, start='y', cntdwn=3):
         # define the countdown func
-        while t >= 0:
-            print(t, end='... ')
+        while Human.cntdwn >= 0:
+            print(time, end='... ')
             time.sleep(1)
             # Countdown from 3
-            t -= 1
-            Human.Choice = input('SHOOT: (R/P/S)')
-            break
+            Human.cntdwn -= 1
+        Human.Choice = input('SHOOT: (R/P/S): ')
     pass
 
-# Reset Loop
+
+# TODO: Reset Loop
 class Reset(MatchLogic):
-    # If not draw, show score for current session
-    # If draw, immediately count down again
+    # TODO:
+    #  If not draw, show score for current session
+    # TODO:
+    #  If draw, immediately count down again
     pass
 
 
-# Scoring
+# TODO: Scoring
 class Scoring(Human, Computer):
-    # Output (p1) v (p2) = ?
-    # print('Player: ', shot, 'Computer: ', computer, ' || Score: ', scoreH, ' : ', scoreC)
+    # TODO: Output (p1) v (p2) = ?
     pass
 
 
-x = Human('Player 1', 0, 'R')
-y = Computer('Computer', 0, 'R')
+# Variables:
+x = Human('Player 1', 0, 'R',
+          ['Rock Paper Scissor Rules:\n', 'Rock beats scissors\n', 'Paper beats rock\n',
+           'Scissor beats paper\n', 'Player one decides on the count of three what option ',
+           'of the three they want to show\n', 'Player two also decides, ', 'and they reveal at the same time\n'],
+          input('Are you ready to play? y/n: '), 3)
+y = Computer('Computer', 0, 'R', ' ', ' ', 1)
 Computer.Choice = random.choice(['Rock', 'Paper', 'Scissors'])
