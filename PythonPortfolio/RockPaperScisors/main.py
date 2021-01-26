@@ -32,6 +32,8 @@ import random
 
 
 # Player Attributes
+
+
 class Human:
     cntdwn = 0
 
@@ -59,57 +61,79 @@ class Human:
         self.start = start
 
 
-# Computer Attributes
+    # Computer attributes
 class Computer(Human):
     # Computer Choice
     pass
 
 
-# TODO: Match Logic
 class MatchLogic(Human, Computer):
-    # Match Logic:
+# TODO: Rock Paper Scissor Rules:
+#  Rock beats scissor
+#  Paper beats rock
+#  Scissor beats paper
 
-    # TODO: Rock Paper Scissor Rules:
-    #  Rock beats scissor
-    #  Paper beats rock
-    #  Scissor beats paper
+# TODO:
+#  Player one decides on the count of three what option of the three they want to show
+#  Player two also decides, and they reveal at the same x
 
-    # TODO:
-    #  Player one decides on the count of three what option of the three they want to show
-    #  Player two also decides, and they reveal at the same x
+# Timer (Seconds)
 
-    # Timer (Seconds)
-    while Human(player=str, score=int, script=list[str], choice=str, start='y', cntdwn=3):
-        # define the countdown func
-        while Human.cntdwn >= 0:
-            print(time, end='... ')
-            time.sleep(1)
-            # Countdown from 3
-            Human.cntdwn -= 1
-        Human.Choice = input('SHOOT: (R/P/S): ')
-    pass
-
-
-# TODO: Reset Loop
 class Reset(MatchLogic):
-    # TODO:
-    #  If not draw, show score for current session
-    # TODO:
-    #  If draw, immediately count down again
-    pass
+    # TODO: If not draw, show score for current session
+    # TODO: If draw, immediately count down again
 
 
-# TODO: Scoring
 class Scoring(Human, Computer):
     # TODO: Output (p1) v (p2) = ?
     pass
 
 
 # Variables:
-x = Human('Player 1', 0, 'R',
-          ['Rock Paper Scissor Rules:\n', 'Rock beats scissors\n', 'Paper beats rock\n',
-           'Scissor beats paper\n', 'Player one decides on the count of three what option ',
-           'of the three they want to show\n', 'Player two also decides, ', 'and they reveal at the same time\n'],
-          input('Are you ready to play? y/n: '), 3)
-y = Computer('Computer', 0, 'R', ' ', ' ', 1)
+count = 3
+shoot = 'SHOOT: (R/P/S)\n'
+startScript: list[str]= ['Rock Paper Scissor Rules: ', 'Rock beats scissors', 'Paper beats rock',
+              'Scissor beats paper', 'Player one decides on the count of three what option ',
+              'of the three they want to show', 'Player two also decides, ', 'and they reveal at the same time']
+print(startScript)
+ready = input('Are you ready to play? y/n: ')
+
+
+
+p1 = Human('Player 1', 0, 'R', startScript, ready, count)
+p2 = Computer('Computer', 0, 'R', ' ', ' ', 1)
+gameStart = False
+
 Computer.Choice = random.choice(['Rock', 'Paper', 'Scissors'])
+
+while ready:= 'y':
+    gameStart = True
+
+while gameStart:
+        while count > 0:
+            for i in range(count):
+                print(str(count-i) + "...")
+                time.sleep(1)
+                print(shoot)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
