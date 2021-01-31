@@ -1,0 +1,27 @@
+# Write a python program that does the following:
+#TODO ask the user to enter a number n (assume n is int and >0)
+#TODO print out on separate lines all the int from n to 1
+#TODO stops
+x = 0
+
+def countdown(x):
+    n = int(input('Enter an integer: \n'))
+    while n > 1:
+        n -= 1
+        return(n)
+
+def a(x):
+    a = 3.9 * (x - x * x)
+    while a > 0:
+        return(a)
+
+def b(x):
+    b = 3.9 * x - 3.9 * x * x
+    while b > 0:
+        return(b)
+
+def c(x):
+    c = x * (3.9 - 3.9 * x)
+    while c > 0:
+        return(c)
+
