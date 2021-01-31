@@ -1,0 +1,97 @@
+# Foundations of Programming Lab Session 3
+# Write a python program that asks the user to input a number
+# m of minutes (assume m integer and >0) and a number of seconds
+# s (s float and 0 < s < 60).
+
+# The program should then calculate and display the final speed v
+# that an object (initially stationary) reaches after falling freely
+# towards the earch for m minutes and s seconds, and stop.
+
+# NOTE: ignoring the effects of frictions with the air, the speed
+# v (in meters / seconds) of any free object falling towards the
+# Earth is given by the formula: v = 9.8 * T
+# where T is the total duration of the fall (in seconds).
+
+# As an example:
+# Please enter the durations (total number of minutes) of free fall:
+# (User enters 1)
+
+# Now please enter the remaining seconds of free fall:
+# (User enters 2.5)
+
+# Total duration of the fall: 62.5 seconds
+# Final speed at impact: 612.5 m/s
+
+# Variables
+# ====
+
+# Minutes
+# m of minutes (assume m integer and >0)
+# m = int(input('Please enter the duration (in minutes) of free fall: \n'))
+# m_int = False
+
+# while m is int>0:
+#   m_int = True
+
+
+# Seconds
+# s (s float and 0 < s < 60)
+# s = float(input('Now please enter the remaining seconds of free fall: \n'))
+# s_float = False
+
+# while s is float < 60:
+#    while s is float > 0:
+#        s_float = True
+#    else:
+#        s_float = False
+
+# Total time in seconds
+# t = (m * 60) + s
+
+# Velocity
+# v = 9.8 * t
+
+
+# print('Total duration of the fall: ', t, ' seconds')
+# print('Final speed at impact: ', v, ' m/s')
+###
+
+# Modify the program so that it takes input only as the duration of s
+# of the fall in seconds (with s float) and displays the duration in minutes
+# as an integer number and seconds.
+
+# Example:
+# Please enter the total duration of the free fall in seconds:
+# User enters 362.5
+
+# Total duration: 6 minutes and 2.5 seconds
+# Final speed at impact: 3552.5 m/s
+
+# Seconds
+s = float(input('Please enter the remaining seconds of free fall: \n'))
+s_float = False
+
+while s is float < 60:
+    while s is float > 0:
+        s_float = True
+    else:
+        s_float = False
+
+# Clean up time period
+minutes, seconds = divmod(s, 60)
+
+# Velocity
+v = 9.8 * s
+
+# Total time in seconds
+print('Total duration of fall: ', minutes, 'minutes and ', seconds, 'seconds.')
+print('Final speed at impact: ', round(v, 5), ' m/s')
+
+###
+
+# Extend the program you've written so that the final speed v of the object
+# is displayed in miles/hour (rounded up to nearest int) instead of m/s.
+
+# miles per hour speed = meters per second speed * (3600 / 1609.344)
+
+print("Final speed at impact: ", int(v * (3600 / 1609.334)), "m/ph")
